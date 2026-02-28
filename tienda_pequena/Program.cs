@@ -65,6 +65,32 @@ do
                 Console.ReadLine();
             }
             break;
+        case "3":
+            Console.WriteLine("buscar producto");
+            Console.WriteLine();
+            Console.Write("ingrese nombre del Producto: ");
+            string nombre= Console.ReadLine();
+            nombre = nombre.ToLower()
+                ;
+            if (productos.Contains(nombre))
+            {
+                Console.WriteLine("se encontro el Producto");
+                Console.WriteLine();
+                Console.WriteLine("ID          Nombre Producto");
+                foreach(String p in productos)
+                {
+                    if (p == nombre)
+                    {
+                        Console.WriteLine($"{productos.IndexOf(p)}          {productos[productos.IndexOf(p)]}");
+                    }
+                }
+           
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Presione Enter para continuar");
+            Console.ReadLine();
+            break;
     }
 
     Console.Clear();
