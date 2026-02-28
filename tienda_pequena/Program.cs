@@ -44,6 +44,26 @@ do
             } while (respuesta == "si");
             break;
         case "2":
+            if (productos.Count == 0)
+            {
+                Console.WriteLine("no hay datos registrados");
+                Console.WriteLine();
+                Console.WriteLine("Presione Enter para continuar");
+                Console.ReadLine();
+
+            }
+            else
+            {
+                Console.WriteLine("ID         Nombre del Producto");
+                foreach(string P in productos)
+                {
+                    Console.WriteLine($"{productos.IndexOf(P)}          {P}");
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("Presione Enter para continuar");
+                Console.ReadLine();
+            }
             break;
     }
 
