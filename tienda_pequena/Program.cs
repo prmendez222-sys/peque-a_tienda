@@ -34,8 +34,7 @@ do
 
                 Console.WriteLine();
                 Console.WriteLine("producto ingresado correctamente");
-
-                Console.Clear();
+                Console.WriteLine();
                 do
                 {
                     Console.Write("desea ingresar otro Prodructo (si/no): ");
@@ -43,6 +42,8 @@ do
                     Console.Clear();
                 } while (respuesta != "no" && respuesta != "si");
             } while (respuesta == "si");
+            break;
+        case "2":
             break;
     }
 
