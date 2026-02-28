@@ -21,4 +21,31 @@ do
 
     Console.Clear();
 
+    switch (opcion)
+    {
+        case "1":
+     
+            string respuesta;
+
+            do
+            {
+                Console.Write("ingrese nombre del Producto: ");
+                productos.Add(Console.ReadLine());
+
+                Console.WriteLine();
+                Console.WriteLine("producto ingresado correctamente");
+
+                Console.Clear();
+                do
+                {
+                    Console.Write("desea ingresar otro Prodructo (si/no): ");
+                    respuesta = Console.ReadLine();
+                    Console.Clear();
+                } while (respuesta != "no" && respuesta != "si");
+            } while (respuesta == "si");
+            break;
+    }
+
+    Console.Clear();
+
 } while (opcion != "10");
