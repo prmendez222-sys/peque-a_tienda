@@ -1,2 +1,24 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System.Collections;
+
+List<string> productos = new List<string>();
+string opcion;
+
+do
+{
+    Console.WriteLine("1. Agregar producto");
+    Console.WriteLine("2. Mostrar productos");
+    Console.WriteLine("3. Buscar producto");
+    Console.WriteLine("4. Eliminar producto por nombre");
+    Console.WriteLine("5. Eliminar producto por posición");
+    Console.WriteLine("6. Ordenar productos");
+    Console.WriteLine("7. Invertir lista");
+    Console.WriteLine("8. Vaciar lista");
+    Console.WriteLine("9. Mostrar cantidad de productos");
+    Console.WriteLine("10. salir");
+    Console.WriteLine();
+    Console.Write("ingrese una opcion: ");
+    opcion= Console.ReadLine();
+
+    Console.Clear();
+
+} while (opcion != "10");
