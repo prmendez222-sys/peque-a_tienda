@@ -11,7 +11,7 @@ do
     Console.WriteLine("2. Mostrar productos");
     Console.WriteLine("3. Buscar producto");
     Console.WriteLine("4. Eliminar producto por nombre");
-    Console.WriteLine("5. Eliminar producto por posición");
+    Console.WriteLine("5. Eliminar producto por ID");
     Console.WriteLine("6. Ordenar productos");
     Console.WriteLine("7. Invertir lista");
     Console.WriteLine("8. Vaciar lista");
@@ -49,10 +49,6 @@ do
             if (productos.Count == 0)
             {
                 Console.WriteLine("no hay datos registrados");
-                Console.WriteLine();
-                Console.WriteLine("Presione Enter para continuar");
-                Console.ReadLine();
-
             }
             else
             {
@@ -61,35 +57,89 @@ do
                 {
                     Console.WriteLine($"{Id[i]}          {productos[i]}");
                 }
-
-                Console.WriteLine();
-                Console.WriteLine("Presione Enter para continuar");
-                Console.ReadLine();
             }
+            Console.WriteLine();
+            Console.WriteLine("Presione Enter para continuar");
+            Console.ReadLine();
             break;
         case "3":
-            int contP = 0;
-            Console.WriteLine("buscar producto");
-            Console.WriteLine();
-            Console.Write("ingrese nombre del Producto: ");
-            string nombre= Console.ReadLine();
-            nombre = nombre.ToLower()
-                ;
-            if (productos.Contains(nombre))
+            if (productos.Count == 0)
             {
+                Console.WriteLine("no hay datos registrados");
+            }
+            else
+            {
+                Console.WriteLine("buscar producto");
                 Console.WriteLine();
-                Console.WriteLine("se encontraron los siguientes Productos");
-                Console.WriteLine();
-                Console.WriteLine("ID          Nombre Producto");
-                for(int x=0; x<productos.Count; x++)
+                Console.Write("ingrese nombre del Producto: ");
+                string nombre = Console.ReadLine();
+                nombre = nombre.ToLower()
+                    ;
+                if (productos.Contains(nombre))
                 {
-                    if (productos[x] == nombre)
+                    Console.WriteLine();
+                    Console.WriteLine("se encontraron los siguientes Productos");
+                    Console.WriteLine();
+                    Console.WriteLine("ID          Nombre Producto");
+                    for (int x = 0; x < productos.Count; x++)
                     {
-                        Console.WriteLine($"{Id[x]}           {productos[x]}");
+                        if (productos[x] == nombre)
+                        {
+                            Console.WriteLine($"{Id[x]}           {productos[x]}");
+                        }
+                    }
+                }
+                else
+                {
+                    if (productos.Exists(n => n.StartsWith(nombre[0])))
+                    {
+                        Console.WriteLine();
+                        string coicidencia = productos.Find(c => c.StartsWith(nombre[0]));
+
+                        Console.WriteLine($"tal ves quisiste decir? {coicidencia}");
+                    }
+                    else
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Producto no encontrado o no existente");
                     }
                 }
             }
 
+            Console.WriteLine();
+            Console.WriteLine("Presione Enter para continuar");
+            Console.ReadLine();
+            break;
+        case "4":
+
+            if (productos.Count == 0)
+            {
+                Console.WriteLine("no hay datos registrados");
+            }
+            else
+            {
+                Console.WriteLine("se eliminara la primera coicidencia del producto");
+                Console.WriteLine();
+                Console.Write("ingrese nombre del producto: ");
+                string nombreP = Console.ReadLine();
+                nombreP = nombreP.ToLower();
+
+                if (productos.Contains(nombreP))
+                {
+                    productos.Remove(nombreP);
+                    Id.Remove(productos.IndexOf(nombreP));
+
+                    Console.WriteLine();
+                    Console.WriteLine("Producto eliminado con exito");
+
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Producto no existente");
+                    Console.WriteLine();
+                }
+            }
             Console.WriteLine();
             Console.WriteLine("Presione Enter para continuar");
             Console.ReadLine();
