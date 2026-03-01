@@ -3,6 +3,7 @@
 List<string> productos = new List<string>();
 List<int> Id=new List<int>();
 string opcion;
+int cont = 0;
 
 do
 {
@@ -27,10 +28,8 @@ do
         case "1":
      
             string respuesta;
-
             do
             {
-                int cont=0;
                 Id.Add(cont++);
                 Console.Write("ingrese nombre del Producto: ");
                 productos.Add(Console.ReadLine());
@@ -78,22 +77,16 @@ do
                 ;
             if (productos.Contains(nombre))
             {
-                Console.WriteLine("se encontro el Producto");
+                Console.WriteLine();
+                Console.WriteLine("se encontraron los siguientes Productos");
                 Console.WriteLine();
                 Console.WriteLine("ID          Nombre Producto");
-                foreach(String p in productos)
+                for(int x=0; x<productos.Count; x++)
                 {
-                    if (p == nombre)
+                    if (productos[x] == nombre)
                     {
-                        contP++;
+                        Console.WriteLine($"{Id[x]}           {productos[x]}");
                     }
-                }
-
-                Console.WriteLine($"{productos.IndexOf(nombre)}          {productos[productos.IndexOf(nombre)]}");
-                Console.WriteLine();
-                if (contP > 1)
-                {
-                    Console.WriteLine($"se encontraron otras {contP-1} coincidencias");
                 }
             }
 
