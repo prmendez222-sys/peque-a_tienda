@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 
 List<string> productos = new List<string>();
+List<int> Id=new List<int>();
 string opcion;
 
 do
@@ -29,6 +30,8 @@ do
 
             do
             {
+                int cont=0;
+                Id.Add(cont++);
                 Console.Write("ingrese nombre del Producto: ");
                 productos.Add(Console.ReadLine());
 
@@ -55,9 +58,9 @@ do
             else
             {
                 Console.WriteLine("ID         Nombre del Producto");
-                foreach(string P in productos)
+                for(int i=0; i<productos.Count; i++)
                 {
-                    Console.WriteLine($"{productos.IndexOf(P)}          {P}");
+                    Console.WriteLine($"{Id[i]}          {productos[i]}");
                 }
 
                 Console.WriteLine();
@@ -66,6 +69,7 @@ do
             }
             break;
         case "3":
+            int contP = 0;
             Console.WriteLine("buscar producto");
             Console.WriteLine();
             Console.Write("ingrese nombre del Producto: ");
@@ -81,10 +85,16 @@ do
                 {
                     if (p == nombre)
                     {
-                        Console.WriteLine($"{productos.IndexOf(p)}          {productos[productos.IndexOf(p)]}");
+                        contP++;
                     }
                 }
-           
+
+                Console.WriteLine($"{productos.IndexOf(nombre)}          {productos[productos.IndexOf(nombre)]}");
+                Console.WriteLine();
+                if (contP > 1)
+                {
+                    Console.WriteLine($"se encontraron otras {contP-1} coincidencias");
+                }
             }
 
             Console.WriteLine();
