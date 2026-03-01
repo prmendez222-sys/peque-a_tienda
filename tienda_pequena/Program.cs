@@ -127,7 +127,6 @@ do
                 if (productos.Contains(nombreP))
                 {
                     productos.Remove(nombreP);
-                    Id.Remove(productos.IndexOf(nombreP));
 
                     Console.WriteLine();
                     Console.WriteLine("Producto eliminado con exito");
@@ -157,9 +156,9 @@ do
 
                 if (Id.Contains(posicion))
                 {
+                  
                     productos.RemoveAt(posicion);
-                    Id.RemoveAt(posicion);
-
+                 
                     Console.WriteLine("producto eliminado con exito");
                 }
                 else
