@@ -144,6 +144,34 @@ do
             Console.WriteLine("Presione Enter para continuar");
             Console.ReadLine();
             break;
+        case "5":
+            if(productos.Count == 0)
+            {
+                Console.WriteLine("no hay datos registrados");
+            }
+            else
+            {
+                Console.Write("ingrese ID del Producto: ");
+                int posicion=int.Parse(Console.ReadLine());
+                Console.WriteLine();
+
+                if (Id.Contains(posicion))
+                {
+                    productos.RemoveAt(posicion);
+                    Id.RemoveAt(posicion);
+
+                    Console.WriteLine("producto eliminado con exito");
+                }
+                else
+                {
+                    Console.WriteLine("ID no existente");
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("Presione Enter para continuar");
+                Console.ReadLine();
+            }
+            break;
     }
 
     Console.Clear();
