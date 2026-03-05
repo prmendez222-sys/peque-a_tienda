@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 List<string> productos = new List<string>();
 List<int> Id=new List<int>();
@@ -53,7 +54,7 @@ do
             else
             {
                 Console.WriteLine("ID         Nombre del Producto");
-                for(int i=0; i<productos.Count; i++)
+                for(int i=0; i<Id.Count; i++)
                 {
                     Console.WriteLine($"{Id[i]}          {productos[i]}");
                 }
@@ -63,7 +64,7 @@ do
             Console.ReadLine();
             break;
         case "3":
-            if (productos.Count == 0)
+            if (productos.Count == 0 && Id.Count == 0)
             {
                 Console.WriteLine("no hay datos registrados");
             }
@@ -112,7 +113,7 @@ do
             break;
         case "4":
 
-            if (productos.Count == 0)
+            if (productos.Count == 0 && Id.Count==0)
             {
                 Console.WriteLine("no hay datos registrados");
             }
@@ -126,7 +127,9 @@ do
 
                 if (productos.Contains(nombreP))
                 {
+                    int indexP=productos.IndexOf(nombreP);
                     productos.Remove(nombreP);
+                    Id.RemoveAt(indexP);
 
                     Console.WriteLine();
                     Console.WriteLine("Producto eliminado con exito");
@@ -144,7 +147,7 @@ do
             Console.ReadLine();
             break;
         case "5":
-            if(productos.Count == 0)
+            if(productos.Count == 0 && Id.Count == 0)
             {
                 Console.WriteLine("no hay datos registrados");
             }
@@ -156,8 +159,10 @@ do
 
                 if (Id.Contains(posicion))
                 {
-                  
+
+                    int numero = Id[posicion];
                     productos.RemoveAt(posicion);
+                    Id.Remove(numero);
                  
                     Console.WriteLine("producto eliminado con exito");
                 }
@@ -170,6 +175,76 @@ do
                 Console.WriteLine("Presione Enter para continuar");
                 Console.ReadLine();
             }
+            break;
+        case "6":
+            productos.Sort();
+           
+
+            Console.WriteLine("ID         Nombre del Producto");
+            for (int p = 0; p < Id.Count; p++)
+            {
+                Console.WriteLine($"{Id[p]}          {productos[p]}");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Presione Enter para continuar");
+            Console.ReadLine();
+            break;
+        case "7":
+            Id.Reverse();
+            productos.Reverse();
+            Console.WriteLine("ID         Nombre del Producto");
+
+            for (int p = 0; p < Id.Count; p++)
+            {
+                Console.WriteLine($"{Id[p]}          {productos[p]}");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Presione Enter para continuar");
+            Console.ReadLine();
+            break;
+        case "8":
+     
+               do
+                {
+                    Console.Write("desea vaciar la lista (si/no): ");
+                    respuesta = Console.ReadLine();
+                    Console.Clear();
+                } while (respuesta != "si" && respuesta!= "no");
+
+            if (respuesta == "si")
+            {
+                Id.Clear();
+                productos.Clear();
+                Console.WriteLine("Lista vaciada");
+            }
+            else
+            {
+                Console.WriteLine("volver al menu");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Presione Enter para continuar");
+            Console.ReadLine();
+            break;
+        case "9":
+            int cantidad = productos.Count;
+
+            Console.Write($"la cantidad de productos ingresados es {cantidad}");
+            Console.WriteLine();
+            Console.WriteLine("Presione Enter para continuar");
+            Console.ReadLine();
+            break;
+        case "10":
+            Console.Write("saliendo...");
+            Thread.Sleep(1000);
+            break;
+        default:
+            Console.Write("opcion no valida");
+            Console.WriteLine();
+            Console.WriteLine("Presione Enter para continuar");
+            Console.ReadLine();
             break;
     }
 
